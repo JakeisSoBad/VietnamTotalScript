@@ -88,6 +88,7 @@ local Window = Library.CreateLib("VIETNAM Total SCRIPT (Suport 2 Games)", "Ocean
     --Credit & Other
     local Main = Window:NewTab("Other & Credits")
     local MainSection = Main:NewSection("DISCORD : ZOHCONFIG#7717")
+    local MainSection = Main:NewSection("PaidScript COMINGSOON")
 
 
 		MainSection:NewButton("infinite yield", "FE script", function()
