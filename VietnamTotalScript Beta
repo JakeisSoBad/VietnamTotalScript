@@ -92,7 +92,6 @@ local Window = Library.CreateLib("VIETNAM Total SCRIPT (Suport 3 Games)", "Ocean
 	    --Premium
     local Main = Window:NewTab("Premium")
     local MainSection = Main:NewSection("ComingSoon")
-
 	
     --Credit & Other & Premium
     local Main = Window:NewTab("Other & Credits")
