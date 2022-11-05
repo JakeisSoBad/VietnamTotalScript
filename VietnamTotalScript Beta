@@ -67,12 +67,33 @@ local Window = Library.CreateLib("VIETNAM Total SCRIPT (Suport 2 Games)", "Ocean
         loadstring(game:HttpGet("https://gitlab.com/L1ZOT/mango-hub/-/raw/main/Mango-Bloxf-Fruits-Beta"))()
     end)
 
+    --SharkBite 2
+	local Main = Window:NewTab("SharkBite2")
+    local MainSection = Main:NewSection("AutoFarm")
+
+
+	 MainSection:NewButton("AutoFarm #1 (Bruhnhe HUB)", "Good Auto Farm", function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/samuelrblx/Bruhnhe/main/Hub"))()
+    end)
+
+	 MainSection:NewButton("Best! AutoFarm #2 (Catware HUB) Needed Key", "Good Auto Farm", function()
+        loadstring(game:HttpGet("https://catware.vercel.app", true))()
+    end)
+
+	MainSection:NewButton("AutoFarm #3 (Purple HUB) Don't use Killaura", "Good Auto Farm", function()
+       loadstring(game:HttpGet("https://shattered-gang.lol/scripts/sharkbite_2.lua"))()
+    end)
+
+    MainSection:NewButton("AutoFarm #4 (Viper HUB)","Good AutoFarm",function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/SleeksScripts/Sharkbite-2-script/main/Script'))()
+	end)
+
 
     --Credit & Other
     local Main = Window:NewTab("Other & Credits")
     local MainSection = Main:NewSection("DISCORD : ZOHCONFIG#7717")
 
 
-		    MainSection:NewButton("infinite yield", "FE script", function()
+		MainSection:NewButton("infinite yield", "FE script", function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
     end)
