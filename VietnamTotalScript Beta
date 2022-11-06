@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("VietNamTotal (Suport 3 Games)", "Ocean")
+local Window = Library.CreateLib("VietNamTotal (Suport 6 Games)", "Ocean")
     --GPO
     local Main = Window:NewTab("GPO")
     local MainSection = Main:NewSection("AutoFarm GPO")
