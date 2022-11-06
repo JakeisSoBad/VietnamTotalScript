@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("VietNamTotal (Suport 5 Games)", "Ocean")
+local Window = Library.CreateLib("VietNamTotal (Suport 3 Games)", "Ocean")
     --GPO
     local Main = Window:NewTab("GPO")
     local MainSection = Main:NewSection("AutoFarm GPO")
@@ -128,9 +128,31 @@ local Window = Library.CreateLib("VietNamTotal (Suport 5 Games)", "Ocean")
         loadstring(game:HttpGet("https://raw.githubusercontent.com/hajibeza/RIPPER-HUB/main/King%20Leagacy"))()
     end)
 
-	MainSection:NewButton("AutoFarm #4 (Strike HUB)", "Good Auto Farm",function()
+	MainSection:NewButton("AutoFarm #4( Strike HUB)", "Good Auto Farm",function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Ternich/rbxscript/main/unew"))()
 	end)
+
+	    --The Wild West
+	local Main = Window:NewTab("The Wild West")
+    local MainSection = Main:NewSection("AutoFarm")
+
+	MainSection:NewButton("Best! AutoFarm #1 (Ethenal HUB)", "Good Auto Farm",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/master/rap"))()
+	end)
+
+	MainSection:NewButton("AutoFarm #2 (V.G HUB)", "Good Auto Farm",function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/V.G-Hub/main/V.Ghub'))()
+	end)
+
+	MainSection:NewButton("AutoFarm #3 (WildWestLean)", "Good Auto Farm",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/master/girth"))()
+	end)
+
+	MainSection:NewButton("AutoFarm #4 (Parvus Hub)", "Good Auto Farm",function()
+		loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/AlexR32/Parvus/main/Loader.lua"))()
+	end)
+
+	
 	    --Premium
     local Main = Window:NewTab("Premium")
     local MainSection = Main:NewSection("ComingSoon")
