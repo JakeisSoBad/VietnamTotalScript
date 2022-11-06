@@ -1,6 +1,6 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("VietNamTotal (Suport 3 Games)", "Ocean")
-    -- 	GPO
+local Window = Library.CreateLib("VietNamTotal (Suport 4 Games)", "Ocean")
+    --GPO
     local Main = Window:NewTab("GPO")
     local MainSection = Main:NewSection("AutoFarm GPO")
 
@@ -20,10 +20,10 @@ local Window = Library.CreateLib("VietNamTotal (Suport 3 Games)", "Ocean")
 
     --Blox Fruit
     local Main = Window:NewTab("BloxFruit")
-    local MainSection = Main:NewSection("AutoFarm")
+    local MainSection = Main:NewSection("AutoFarm (Bounty Hunt Soon)")
 
 
-    MainSection:NewButton("AutoFarm #1 (Xenon HUB)", "Good Auto Farm", function()
+    MainSection:NewButton("AutoFarm #1 (Uniuqe HUB)", "Good Auto Farm", function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/AkiraNus/UniquehubKak/main/FreeCr.Xenonhub"))()
     end)
 
@@ -32,7 +32,7 @@ local Window = Library.CreateLib("VietNamTotal (Suport 3 Games)", "Ocean")
     end)
 
     MainSection:NewButton("AutoFarm #3 (Zen HUB)", "Good Auto Farm", function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Kaizenofficiall/ZenHub/main/Loader", true))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Kaizenofficiall/ZenHub/main/Loader"))()
     end)
 
     MainSection:NewButton(" BEST!!! AutoFarm #4 (Mukuro HUB)", " Very Good Auto Farm", function()
@@ -87,17 +87,43 @@ local Window = Library.CreateLib("VietNamTotal (Suport 3 Games)", "Ocean")
     MainSection:NewButton("AutoFarm #4 (Viper HUB)","Good AutoFarm",function()
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/SleeksScripts/Sharkbite-2-script/main/Script'))()
 	end)
+    --Project Slayer
+	local Main = Window:NewTab("Project slayer")
+    local MainSection = Main:NewSection("AutoFarm")
+
+
+    MainSection:NewButton("Best!! AutoFarm #1 (NUB.XYZ)", "Good Auto Farm", function()
+         loadstring(game:HttpGet('https://rawscripts.net/raw/UPDATE-16-Blox-Fruits-Nub-V1-Hub-4583'))()
+    end)
+	
+    MainSection:NewButton("AutoFarm #2 (Carley Hub)", "Good Auto Farm", function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/lmmake/fun/main/projectslayer.lua"))()
+    end)
+
+    MainSection:NewButton("AutoFarm #3 (Lazy HUB)", "Good Auto Farm", function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/LioK251/RbScripts/main/lazyhub.lua"))()
+    end)
+
+	MainSection:NewButton("AutoSpin", "Good Auto Spin For You", function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/JakeisSoBad/AutoSpin/main/AutoSpin1"))()
+    end)
 
 
 	    --Premium
     local Main = Window:NewTab("Premium")
     local MainSection = Main:NewSection("ComingSoon")
+
+	    --Mobile
+	local Main = Window:NewTab("Mobile")
+    local MainSection = Main:NewSection("ComingSoon")
 	
+
     --Credit & Other & Premium
     local Main = Window:NewTab("Other & Credits")
     local MainSection = Main:NewSection("DISCORD : ZOHCONFIG#7717")
     local MainSection = Main:NewSection("If any scripts is expired then dm me")
 
-		MainSection:NewButton("infinite yield", "FE script", function()
+
+	MainSection:NewButton("infinite yield", "FE script", function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
     end)
