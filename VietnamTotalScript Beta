@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("VietNamTotal (Suport 4 Games)", "Ocean")
+local Window = Library.CreateLib("VietNamTotal (Suport 5 Games)", "Ocean")
     --GPO
     local Main = Window:NewTab("GPO")
     local MainSection = Main:NewSection("AutoFarm GPO")
@@ -87,6 +87,8 @@ local Window = Library.CreateLib("VietNamTotal (Suport 4 Games)", "Ocean")
     MainSection:NewButton("AutoFarm #4 (Viper HUB)","Good AutoFarm",function()
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/SleeksScripts/Sharkbite-2-script/main/Script'))()
 	end)
+
+
     --Project Slayer
 	local Main = Window:NewTab("Project slayer")
     local MainSection = Main:NewSection("AutoFarm")
@@ -104,11 +106,31 @@ local Window = Library.CreateLib("VietNamTotal (Suport 4 Games)", "Ocean")
         loadstring(game:HttpGet("https://raw.githubusercontent.com/LioK251/RbScripts/main/lazyhub.lua"))()
     end)
 
-	MainSection:NewButton("AutoSpin", "Good Auto Spin For You", function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/JakeisSoBad/AutoSpin/main/AutoSpin1"))()
+	MainSection:NewButton("AutoFarm #4 (Phantom HUB)", "Good Auto Farm", function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/destylol/masterhubv311/itachi/Main.lua"))()
     end)
 
+        local MainSection = Main:NewSection("AutoSpin ComingSoon")
 
+        --KingLegacy
+    local Main = Window:NewTab("KingLegacy")
+    local MainSection = Main:NewSection("AutoFarm")
+
+	MainSection:NewButton("AutoFarm #1 (Hyper HUB) Needed Key", "Good Auto Farm", function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/DookDekDEE/Hyper/main/script.lua"))()
+    end)
+
+	MainSection:NewButton("Best! AutoFarm #2 (Mukuro HUB) Needed Key", "Good Auto Farm", function()
+         loadstring(game:HttpGet"https://raw.githubusercontent.com/xQuartyx/DonateMe/main/ScriptLoader")()
+    end)
+
+	MainSection:NewButton("AutoFarm #3 (Riper HUB)", "Good Auto Farm", function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/hajibeza/RIPPER-HUB/main/King%20Leagacy"))()
+    end)
+
+	MainSection:NewButton("AutoFarm #4 (Strike HUB)", "Good Auto Farm",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Ternich/rbxscript/main/unew"))()
+	end)
 	    --Premium
     local Main = Window:NewTab("Premium")
     local MainSection = Main:NewSection("ComingSoon")
