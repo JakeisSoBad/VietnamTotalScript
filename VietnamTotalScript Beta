@@ -20,7 +20,7 @@ local Window = Library.CreateLib("VietNamTotal (Suport 6 Games)", "Ocean")
 
     --Blox Fruit
     local Main = Window:NewTab("BloxFruit")
-    local MainSection = Main:NewSection("Auto confetti now ! 🤩🤩")
+    local MainSection = Main:NewSection("🎉🎉 Auto confetti now 🎉🎉")
 
 
     MainSection:NewButton("AutoFarm #1 (Uniuqe HUB)", "Good Auto Farm", function()
@@ -63,8 +63,8 @@ local Window = Library.CreateLib("VietNamTotal (Suport 6 Games)", "Ocean")
         loadstring(game:HttpGet("https://gitlab.com/L1ZOT/mango-hub/-/raw/main/Mango-Bloxf-Fruits-Beta"))()
     end)
 
-	local MainSection = Main:NewSection("Conffeti 🤩🤩")
-	MainSection:NewButton("AutoFarm Conffeti", "Good Auto Farm", function()
+	local MainSection = Main:NewSection("🎉🎉 Conffeti 🎉🎉")
+	MainSection:NewButton("🎉🎉AutoFarm Conffeti 🎉🎉", "Good Auto Farm", function()
         _G.AutoConfetti = true
         loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptpastebin/raw/main/Confetti"))()
     end)
