@@ -20,7 +20,7 @@ local Window = Library.CreateLib("VietNamTotal (Suport 6 Games)", "Ocean")
 
     --Blox Fruit
     local Main = Window:NewTab("BloxFruit")
-    local MainSection = Main:NewSection("AutoFarm (Bounty Hunt Soon)")
+    local MainSection = Main:NewSection("Auto confetti now ! 🤩🤩")
 
 
     MainSection:NewButton("AutoFarm #1 (Uniuqe HUB)", "Good Auto Farm", function()
@@ -51,20 +51,22 @@ local Window = Library.CreateLib("VietNamTotal (Suport 6 Games)", "Ocean")
         loadstring(game:HttpGet('https://raw.githubusercontent.com/SixnumzWOC/Sxnumz/main/SixnumFreeScript.lua'))()
     end)
 
-	MainSection:NewButton("AutoFarm #8 (B_Genesis Tooll HUB)", "Good Auto Farm", function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/raw-scriptpastebin/raw/main/B_Genesis'))()
-    end)
-
-	MainSection:NewButton("AutoFarm #9 (ThunderZ HUB) Needed Key", "Good Auto Farm", function()
+	MainSection:NewButton("AutoFarm #8 (ThunderZ HUB) Needed Key", "Good Auto Farm", function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/ThunderZ-05/HUB/main/Script"))()
     end)
 
-	MainSection:NewButton("AutoFarm #10 (Black-Trap HUB) Keyhere =>", " key : TEST_KEY", function()
+	MainSection:NewButton("AutoFarm #9 (Black-Trap HUB) Keyhere =>", " key : TEST_KEY", function()
         loadstring(game:HttpGet("https://pastebin.com/raw/jmRUdL17"))()
     end)
 
-	MainSection:NewButton("AutoFarm #11 (Mango HUB)", "Good Auto Farm", function()
+	MainSection:NewButton("AutoFarm #10 (Mango HUB)", "Good Auto Farm", function()
         loadstring(game:HttpGet("https://gitlab.com/L1ZOT/mango-hub/-/raw/main/Mango-Bloxf-Fruits-Beta"))()
+    end)
+
+	local MainSection = Main:NewSection("Conffeti 🤩🤩")
+	MainSection:NewButton("AutoFarm Conffeti", "Good Auto Farm", function()
+        _G.AutoConfetti = true
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptpastebin/raw/main/Confetti"))()
     end)
 
     --SharkBite 2
@@ -121,11 +123,11 @@ local Window = Library.CreateLib("VietNamTotal (Suport 6 Games)", "Ocean")
     local Main = Window:NewTab("KingLegacy")
     local MainSection = Main:NewSection("AutoFarm")
 
-	MainSection:NewButton("Best! AutoFarm #1 (Hyper HUB) Needed Key", "Good Auto Farm", function()
+	MainSection:NewButton("AutoFarm #1 (Hyper HUB) Needed Key", "Good Auto Farm", function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/DookDekDEE/Hyper/main/script.lua"))()
     end)
 
-	MainSection:NewButton("AutoFarm #2 (Mukuro HUB) Needed Key", "Good Auto Farm", function()
+	MainSection:NewButton("Best! AutoFarm #2 (Mukuro HUB) Needed Key", "Good Auto Farm", function()
          loadstring(game:HttpGet"https://raw.githubusercontent.com/xQuartyx/DonateMe/main/ScriptLoader")()
     end)
 
