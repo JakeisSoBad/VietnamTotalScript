@@ -7,10 +7,10 @@ local Window = Library.CreateLib("VietNamTotal", "Ocean")
     local MainSection = Main:NewSection("SelectVersion")
 
 
-    MainSection:NewButton("Version 1 (i won't update)", "nothing here", function()
+    MainSection:NewButton("Version 1", "nothing here", function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/JakeisSoBad/VietnamTotalScript/main/VietNamTotalScriptV1"))()
     end)
 
-    MainSection:NewButton("Version 2 (I will update)", "nothing here", function()
+    MainSection:NewButton("Version 2 (recommend)", "nothing here", function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/JakeisSoBad/VietnamTotalScript/main/VietNamTotalScriptV2'))()
     end)
