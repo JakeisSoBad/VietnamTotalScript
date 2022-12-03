@@ -112,6 +112,16 @@ btns:Button("TheWildWest#4 (Parvus HUB) ", function()
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/AlexR32/Parvus/main/Loader.lua"))()
 end)
 
+local btns = serv:Channel("DemonSoul")
+
+btns:Button("Best!! DemonSoul#1 (Lazy HUB) ", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LioK251/RbScripts/main/lazyhub.lua"))()
+end)
+
+btns:Button("DemonSoult#2 (Distic HUB) ", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/bebedi15/DisticHub/main/Loader.lua"))()
+end)
+
 local lbls = serv:Channel("Credits")
 
 lbls:Label("DISCORD : ZOHCONFIG#7717")
