@@ -122,6 +122,16 @@ btns:Button("DemonSoult#2 (Distic HUB) ", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/bebedi15/DisticHub/main/Loader.lua"))()
 end)
 
+local btns = serv:Channel("BeeSwarm Simulator")
+
+btns:Button("Beeswarm#1 (ANDROMEDA HUB) ", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/max0mind/lua/main/loader.lua'))()
+end)
+
+btns:Button("Beeswarm#2 (HISTORIA HUB) ", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Historia00012/HISTORIAHUB/main/BSS%20FREE"))()
+end)
+
 local lbls = serv:Channel("Credits")
 
 lbls:Label("DISCORD : ZOHCONFIG#7717")
