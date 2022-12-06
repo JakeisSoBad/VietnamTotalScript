@@ -25,6 +25,7 @@ Tab:AddTextbox({
 	Callback = function(Value)
 		_G.KeyInput = Value
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/JakeisSoBad/VietnamTotalScript/main/VNTotal"))()
+		OrionLib:Destroy()
 	end	  
 })
 
