@@ -1,16 +1,36 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("VietNamTotal", "Ocean")
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Player = game.Players.LocalPlayer
+local Window = OrionLib:MakeWindow({Name = "VNtotalGui KeySystem", HidePremium = false, SaveConfig = true, IntroEnabled = true , IntroText = "VNtotalGui KeySystem"})
 
+OrionLib:MakeNotification({
+	Name = "Logged In",
+	Content = "You are logged in as "..Player.Name..".",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
 
-    --SelectVersion
-    local Main = Window:NewTab("SelectVersion")
-    local MainSection = Main:NewSection("SelectVersion")
+_G.Key = "vnsexy"
+_G.KeyInput = "string"
 
+local Tab = Window:MakeTab({
+	Name = "Enter Key",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
 
-    MainSection:NewButton("Version 1", "nothing here", function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/JakeisSoBad/VietnamTotalScript/main/VietNamTotalScriptV1"))()
-    end)
+Tab:AddTextbox({
+	Name = "Key",
+	Default = "Key",
+	TextDisappear = true,
+	Callback = function(Value)
+		_G.KeyInput = Value
+		
+	end	  
+})
 
-    MainSection:NewButton("Version 2 (recommend)", "nothing here", function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/JakeisSoBad/VietnamTotalScript/main/VietNamTotalScriptV2'))()
-    end)
+Tab:AddButton({
+	Name = "Button!",
+	Callback = function()
+      		setclipboard("https://link-target.net/553457/keysystem")
+  	end    
+})
