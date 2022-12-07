@@ -19,19 +19,27 @@ local Tab = Window:MakeTab({
 })
 
 Tab:AddTextbox({
-	Name = "Key",
+	Name = "EnterKey And Press Enter",
 	Default = "Key",
 	TextDisappear = true,
 	Callback = function(Value)
 		_G.KeyInput = Value
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/JakeisSoBad/VietnamTotalScript/main/VNTotal"))()
+		loadstring(game:HttpGet("https://github.com/JakeisSoBad/VietnamTotalScript/blob/main/VietNamTotalScriptV1"))()
 		OrionLib:Destroy()
 	end	  
 })
 
 Tab:AddButton({
-	Name = "CopyLinkKey",
+	Name = "CopyLinkGetKey",
 	Callback = function()
       		setclipboard("https://link-target.net/553457/keysystem")
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Premium",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/JakeisSoBad/VietnamTotalScript/main/Premium"))()
+			  OrionLib:Destroy()
   	end    
 })
