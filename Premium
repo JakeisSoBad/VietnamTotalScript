@@ -1,0 +1,30 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Player = game.Players.LocalPlayer
+local Window = OrionLib:MakeWindow({Name = "VNtotalGui Premium KeySystem", HidePremium = false, SaveConfig = true, IntroEnabled = true , IntroText = "VNtotalGui KeySystem"})
+
+OrionLib:MakeNotification({
+	Name = "Logged In",
+	Content = "You are logged in as "..Player.Name..".",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+_G.Key = "3f2d4677907c942618ef7c515e14baa9"
+_G.KeyInput = "string"
+
+local Tab = Window:MakeTab({
+	Name = "Enter Key",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddTextbox({
+	Name = "Key",
+	Default = "Key",
+	TextDisappear = true,
+	Callback = function(Value)
+		_G.KeyInput = Value
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/JakeisSoBad/VietnamTotalScript/main/VNTotal"))()
+		OrionLib:Destroy()
+	end	  
+})
