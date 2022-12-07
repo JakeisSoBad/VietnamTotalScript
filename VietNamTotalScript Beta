@@ -30,7 +30,7 @@ Tab:AddTextbox({
 })
 
 Tab:AddButton({
-	Name = "Button!",
+	Name = "CopyLinkKey",
 	Callback = function()
       		setclipboard("https://link-target.net/553457/keysystem")
   	end    
