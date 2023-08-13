@@ -25,7 +25,7 @@ local Window = Rayfield:CreateWindow({
        Key = {"v72144982s01vnsidot43v4891"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
     }
  })
- local Tab = Window:CreateTab("Normal Farm (Still having Bug)", 4483362458) -- Title, Image
+ local Tab = Window:CreateTab("Insatp", 4483362458) -- Title, Image
  local Section = Tab:CreateSection("Rilfe Method Still Buggy(dont use)")
 local Button = Tab:CreateButton({
 	Name = "Fishman Insta TP",
