@@ -1,0 +1,980 @@
+local Library = loadstring(game:GetObjects("rbxassetid://7657867786")[1].Source)()
+local Subs = Library.subs 
+local IsOpen = Subs.Wait
+
+local Core = Library:CreateWindow({
+    Name = "Notgayeasy hub",
+    Themeable = {
+        Info = {"By Gayeasy 5 Bucks each script huh"},
+        Credit = false, 
+        Background = "",
+        Visible = true
+    }
+})
+
+local Main = Core:CreateTab({
+    Name = "Main"
+})
+
+local Misc = Core:CreateTab({
+    Name = "Misc"
+})
+
+local Farming = Main:CreateSection({
+    Name = "Auto-Farm"
+})
+
+local PPlayers = Main:CreateSection({
+    Name = "Players"
+})
+
+local Settings = Main:CreateSection({
+    Name = "Settings"
+})
+
+local BossStatus = Main:CreateSection({
+    Name = "Living Bosses"
+})
+
+local Aura = Main:CreateSection({
+    Name = "Aura",
+    Side = "Right"
+})
+
+local Teleports = Main:CreateSection({
+    Name = "Teleports",
+    Side = "Right"
+})
+
+local Info = Main:CreateSection({
+    Name = "Info",
+    Side = "Right"
+})
+
+local MiscMain = Misc:CreateSection({
+    Name = "Main"
+})
+
+local MiscTroll = Misc:CreateSection({
+    Name = "Troll",
+    Side = "Right"
+})
+
+local MiscMisc = Misc:CreateSection({
+    Name = "Misc",
+    Side = "Right"
+})
+
+local table = table 
+local insert = table.insert 
+local task = task
+local spawn = task.spawn 
+local pcall = pcall
+
+local CoreGui = game:GetService("CoreGui")
+local StarterPack = game:GetService("StarterPack")
+local Workspace = game:GetService("Workspace")
+local MobFolder = Workspace:WaitForChild("Mobs")
+local Map = Workspace:WaitForChild("Map")
+local BossFolder = MobFolder:FindFirstChild("Bosses")
+local Flowers = Workspace:FindFirstChild("Demon_Flowers_Spawn")
+local Debree = Workspace:WaitForChild("Debree")
+local RunService = game:GetService("RunService")
+local Stepped = RunService.Stepped
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer 
+local PlayerGui = Player:WaitForChild("PlayerGui")
+local PlayerScripts = Player:WaitForChild("PlayerScripts")
+local PopUps = PlayerGui:WaitForChild("Pop_Ups")
+local LittleBars = PopUps:WaitForChild("LitleBars_Holder")
+local FuriosityDisplay = LittleBars:WaitForChild("clan_furiosity_skill123asd_display")
+local Backpack = Player:WaitForChild("Backpack")
+local Character = Player.Character or Player.CharacterAdded:Wait() 
+local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+local Humanoid = Character:WaitForChild("Humanoid")
+local Combo 
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local MiscFolder = ReplicatedStorage:WaitForChild("Misc")
+local Clashing = MiscFolder:WaitForChild("Clashing")
+local Ouwigahara = ReplicatedStorage:FindFirstChild("Ouwigahara") 
+local Powerups = Ouwigahara and Ouwigahara:FindFirstChild("Powerups")
+local Remotes = ReplicatedStorage:WaitForChild("Remotes")
+local IceCounter = Remotes:WaitForChild("ice_counter_remoteasd")
+local DrumRemote = Remotes:WaitForChild("war_Drums_remote")
+local HeartAblaze = Remotes:WaitForChild("heart_ablaze_mode_remote")
+local GodSpeed = Remotes:WaitForChild("thundertang123")
+local Furiosity = Remotes:WaitForChild("clan_furiosity_add")
+local KamadoHeal = Remotes:WaitForChild("heal_tang123asd")
+local ToServer = Remotes:WaitForChild("To_Server")
+local PDodge = Remotes:WaitForChild("P_Dodge")
+local Handle_Initiate_S_ = ToServer:WaitForChild("Handle_Initiate_S_")
+local Handle_Initiate_S = ToServer:WaitForChild("Handle_Initiate_S")
+local PlayerValues = ReplicatedStorage:WaitForChild("PlayerValues")
+local PlayerData = ReplicatedStorage:WaitForChild("Player_Data")
+local LocalValues = PlayerValues:WaitForChild(Player.Name)
+local LocalData = PlayerData:WaitForChild(Player.Name)
+local BreathingProgress = LocalData:WaitForChild("BreathingProgress")
+local BreathingCount = BreathingProgress:WaitForChild("1")
+local BreathingNew = BreathingProgress:WaitForChild("2")
+local DemonProgress = LocalData:WaitForChild("DemonProgress")
+local DemonCount = DemonProgress:WaitForChild("1")
+local DemonNew = DemonProgress:WaitForChild("2")
+local Clan = LocalData:WaitForChild("Clan")
+local Spins = LocalData:WaitForChild("Spins")
+local Race = LocalData:WaitForChild("Race")
+local Yen = LocalData:WaitForChild("Yen")
+local Inventory = LocalData:WaitForChild("Inventory")
+local TweenService = game:GetService("TweenService")
+local Bindable = Instance.new("BindableEvent")
+local KillAuraReady = false  
+local Status = false
+local Linear = Enum.EasingStyle.Linear 
+local Multiplier = 1
+local LastTween = {Pause = function() end}
+local BreathingLabel, DemonLabel, ClanLabel, SpinLabel, CClan, RaceLabel, RRace, AntiSun, ToggleGod, ToggleSpeed, ToggleAblaze, BossLabel
+local TweenSpeed = 500 
+local Current = true 
+local RG = getrenv()._G 
+local Entities = {} 
+local Bosses = {} 
+local Mobs = {} 
+local Weapons = {
+    ["Scythe"] = "Scythe_Combat_Slash", 
+    ["Sword"] = "Sword_Combat_Slash",
+    ["Claw"] = "claw_Combat_Slash",
+    ["Fans"] = "fans_combat_slash",
+    ["Fist"] = "fist_combat"
+}
+local All = {
+    ["Text"] = ""
+}
+local Races = {
+    [1] = "Human",
+    [2] = "Slayer",
+    [3] = "Demon",
+}
+local Map1 = {
+    ["Kiribating Village"] = CFrame.new(120, 282, -1743),
+    ["Zapiwara Cave"] = CFrame.new(-38, 275, -2403),
+    ["Ushumaro Village"] = CFrame.new(-90, 354, -3170),
+    ["Butterfly Mansion"] = CFrame.new(3001, 316, -3806),
+    ["Final Selection"] = CFrame.new(5258, 365, -2422),
+    ["Zapiwara Mountain"] = CFrame.new(-366, 425, -2371),
+    ["Wind Trainer"] = CFrame.new(1797, 334, -3466),
+    ["Kabiwaru Village"] = CFrame.new(2015, 315, -3051),
+    ["Waroru Cave"] = CFrame.new(689, 261, -2469),
+    ["Ouwbayashi Home"] = CFrame.new(1241, 320, -4568),
+    ["Dangerous Woods"] = CFrame.new(3839, 342, -4177)
+}
+
+local Map2 = {
+    ["Nomay Village"] = CFrame.new(3562, 673, -2109),
+    ["Mugen Train Station"] = CFrame.new(783, 495, 900),
+    ["Wop City"] = CFrame.new(-31, 599, -431),
+    ["Village 2"] = CFrame.new(1215, 567, 95),
+    ["Cave 1"] = CFrame.new(4252, 671, 581),
+    ["Cave 2"] = CFrame.new(1182, 485, -1192),
+    ["Mist trainer location"] = CFrame.new(4324, 671, -569),
+    ["Akeza Cave"] = CFrame.new(1902, 554, -150),
+    ["Frozen Lake"] = CFrame.new(2049, 481, -769),
+    ["Beast Cave"] = CFrame.new(1840, 481, 37),
+    ["Wop's training grounds"] = CFrame.new(223, 595, 483),
+    ["Snowy Place"] = CFrame.new(379, 531, -2865),
+    ["Devourers Jaw"] = CFrame.new(480, 507, -1864),
+    ["Sound Cave"] = CFrame.new(1828, 487, -2770)
+}
+
+local Godmodes = {
+    "Water_Surface_Slash",
+    "Water_fall_basin",
+    "insect_breathing_dance_of_the_centipede",
+    "blood_burst_explosive_choke_slam",
+    "explosive_demon_art_blood_burst",
+    "Wind_breathing_black_wind_mountain_mist",
+    "flame_breathing_flaming_eruption",
+    "scythe_asteroid_reap",
+    "Beast_breathing_devouring_slash",
+    "akaza_flashing_williow_skillasd",
+    "akaza_bda_compass_needle",
+    "dream_bda_flesh_monster",
+    "swamp_bda_swamp_domain",
+    "snow_breatihng_layers_frost",
+    "snow_breathing_illusory_Storm",
+    "sound_breathing_smoke_screen",
+    "ice_demon_art_bodhisatva"
+}  
+
+local Map2List = {}
+local Map1List = {}
+for i,v in next, Map2 do insert(Map2List, i) end
+for i,v in next, Map1 do insert(Map1List, i) end
+local AliveBosses = {}
+local Signals = Library.signals
+
+local IsBoss = function(Instance)
+    if BossFolder then 
+        return Instance:IsDescendantOf(BossFolder) 
+    else 
+        return false 
+    end 
+end 
+
+local find = function(Table, Value) for i,v in next, Table do if v == Value then return i end end end
+
+local Added = function(Instance)
+    local Parent = Instance.Parent 
+    if (not Instance:IsA("Model")) or ((not Parent:IsA("Configuration")) and (not Parent:IsA("Folder"))) then return end 
+    local Config = Parent:WaitForChild("Npc_Configuration")
+    Config = require(Config)
+    local Spawn = Config.Npc_Spawning.Spawn_Locations[1]
+    if IsBoss(Instance) then 
+        insert(AliveBosses, Instance.Name)
+        Bosses[Instance.Name] = Instance.Name 
+    else 
+        Mobs[Instance.Name] = Instance.Name 
+    end 
+    insert(Entities, {Instance, Spawn})
+end 
+
+local Removed = function(Instance)
+    if IsBoss(Instance) then 
+        local Found = find(AliveBosses, Instance.Name) 
+        if Found then 
+            AliveBosses[Found] = nil
+        end 
+    end  
+    for i,v in next, Entities do 
+        if v[1] == Instance then 
+            Entities[i] = nil 
+        end 
+    end 
+end
+
+local Count = function(Table)
+    local Ret = 0 
+    for i,v in next, Table do Ret = Ret + 1 end
+    return Ret 
+end 
+    
+local SelectedBosses, SelectedMobs = {}, {}
+local GetClosestMob = function()
+    local Ret = {nil, 9999999, nil}
+    local Merged = {}
+    for i,v in next, SelectedBosses do Merged[#Merged + 1] = v end
+    for i,v in next, SelectedMobs do Merged[#Merged + 1] = v end
+    local Length = Count(Merged)
+    for i,v in next, Entities do 
+        local Mob = v[1]
+        if not Mob then continue end
+        if Length > 0 and (not find(Merged, Mob.Name)) then continue end
+        local Spawn = v[2]
+        local HRP = Mob:FindFirstChild("HumanoidRootPart")
+        local Humanoid = Mob:FindFirstChild("Humanoid")
+        if Humanoid and Humanoid.Health > 0 then 
+            if HRP then 
+                local Dist = (HumanoidRootPart.Position - HRP.Position).Magnitude 
+                if Dist < Ret[2] then 
+                    Ret[1] = HRP.CFrame 
+                    Ret[2] = Dist
+                    Ret[3] = Mob 
+                    Ret[4] = HRP 
+                end 
+            elseif Spawn then 
+                local Dist = (HumanoidRootPart.Position - Spawn).Magnitude 
+                if Dist < Ret[2] then 
+                    Ret[1] = CFrame.new(Spawn) 
+                    Ret[2] = Dist 
+                    Ret[3] = Mob 
+                end 
+            end 
+        end 
+    end 
+    return Ret 
+end 
+
+local GetClosestPlayer = function()
+    local Ret = {nil, 99999999}
+    for i,v in next, Players:GetPlayers() do 
+        if (v == Player) or (Player.Team and (Player.Team == v.Team)) then continue end
+        local Character = v.Character 
+        local HRP = Character and Character:FindFirstChild("HumanoidRootPart")
+        local UpperTorso = Character and Character:FindFirstChild("UpperTorso")
+        local IsDead = UpperTorso and UpperTorso:FindFirstChild("Revive_Humanoid")
+        if HRP and UpperTorso and (not IsDead) then 
+            local Dist = (HRP.Position - HumanoidRootPart.Position).Magnitude 
+            if Dist < Ret[2] then
+                Ret[1] = HRP.CFrame 
+                Ret[2] = Dist
+                Ret[3] = v
+            end 
+        end 
+    end 
+    return Ret 
+end 
+
+local Method, SelectedWeapon = "", "fist_combat"
+local FireAttack = function(i)
+    return Handle_Initiate_S:FireServer(
+        SelectedWeapon, 
+        Player, 
+        Character, 
+        HumanoidRootPart,
+        Humanoid, 
+        i,
+        Method
+    )    
+end 
+
+local InvokeAttack = function(i)
+    return Handle_Initiate_S_:InvokeServer(
+        SelectedWeapon, 
+        Player, 
+        Character, 
+        HumanoidRootPart,
+        Humanoid, 
+        i,
+        Method
+    )    
+end 
+local GetClosestFlower = function()
+    local Ret = {nil, 9999999}
+    for i,v in next, Flowers:GetChildren() do 
+        if v:IsA("Model") then 
+            local Part = v:FindFirstChild("Cube.002") 
+            local Prox = Part and Part:FindFirstChild("Pick_Demon_Flower_Thing") 
+            if Part and (not Prox) then continue end 
+            local CF = v:GetPivot() 
+            local Pos = Vector3.new(CF.X, CF.Y, CF.Z) 
+            local Magnitude = (HumanoidRootPart.Position - Pos).Magnitude 
+            if Magnitude < Ret[2] then
+                Ret[1] = CF 
+                Ret[2] = Magnitude 
+                Ret[3] = Prox 
+                Ret[4] = v
+            end 
+        end 
+    end 
+    return Ret
+end 
+
+for i,v in next, MobFolder:GetDescendants() do spawn(pcall, Added, v) end 
+Signals[#Signals + 1] = MobFolder.DescendantAdded:Connect(Added)
+Signals[#Signals + 1] = MobFolder.DescendantRemoving:Connect(Removed)
+
+Signals[#Signals + 1] = Player.CharacterAdded:Connect(function(Char)
+    Character = Char
+    HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+    Humanoid = Character:WaitForChild("Humanoid")
+end)
+
+Signals[#Signals + 1] = Stepped:Connect(function()
+    if XLROPFK or Teleporting or XLROPRT or SKTIEP then 
+        for i,v in next, Character:GetDescendants() do 
+            if v:IsA("BasePart") then 
+                v.CanCollide = false 
+            end 
+        end 
+        HumanoidRootPart.Velocity = Vector3.zero
+    end 
+    if WalkSpeed and Humanoid.WalkSpeed < WalkSpeed then 
+        Humanoid.WalkSpeed = WalkSpeed 
+    end 
+    if JumpPower and Humanoid.JumpPower < JumpPower then 
+        Humanoid.JumpPower = JumpPower
+    end 
+end)
+
+spawn(function()
+    while true and IsOpen() do 
+        if SpinLabel and ClanLabel and DemonLabel and BreathingLabel then 
+            CClan = Clan.Value 
+            RRace = Races[Race.Value] 
+            local BossString = "Bosses: {"
+            for i,v in next, AliveBosses do 
+                BossString = BossString.."\n  "..v
+            end 
+            BossString = BossString.."\n}"
+            BossLabel:Set(BossString)
+            SpinLabel:Set(("Spins: %i"):format(Spins.Value))
+            ClanLabel:Set(("Clan: %s"):format(CClan))
+            RaceLabel:Set(("Race: %s"):format(RRace))
+            BreathingLabel:Set(("Breathing Progress: %i/%i"):format(BreathingCount.Value, BreathingNew.Value))
+            DemonLabel:Set(("Demon Progress: %i/%i"):format(DemonCount.Value, DemonNew.Value)) 
+        end 
+        task.wait(0.5)
+    end 
+end)
+
+Signals[#Signals + 1] = Debree.ChildAdded:Connect(function(v)
+    if OSTPRKGL and v.Name == "Loot_Chest" then 
+        local Remote = v:WaitForChild("Add_To_Inventory")
+        local Drops = v:WaitForChild("Drops")  
+        repeat 
+            for i,v in next, Drops:GetChildren() do 
+                Remote:InvokeServer(v.Name)
+            end
+            task.wait(0.25)
+        until not v.Parent
+    elseif PRMFLDS and v.Name == "Soul" then 
+        local Handle = v:WaitForChild("Handle")
+        local Eat = Handle:WaitForChild("Eatthedamnsoul")
+        Eat:FireServer()
+    end 
+end)
+
+loadstring([[
+local Old 
+Old = hookmetamethod(game, "__namecall", function(self, ...)
+    local Method = getnamecallmethod()
+    if Method == "FireServer" or Method == "fireServer" then 
+        local Args = {...}
+        local Tbl = Args[4]
+        if self.Name == "moddelteasdasd123" or self.Name == "Sun_Damage" or (type(Tbl) == "table" and Tbl["Name"] == "CancelThunderClash") then 
+            return 
+        end 
+    end 
+    return Old(self, ...)
+end)
+]])()
+
+FireAttack(1)
+Combo = Player:WaitForChild("combotangasd123")
+
+Farming:AddToggle({
+    Name = "L1",
+    Value = false,
+    Flag = "Arrow",
+    Callback = function(State)
+        Arrow = State 
+        while Arrow and IsOpen() do 
+            pcall(function()
+                Handle_Initiate_S:FireServer("skil_ting_asd", Player, "arrow_knock_back", 5)
+                for i = 1, 50 do
+                    local Data = GetClosestMob() 
+                    local Mob = Data[3]
+                    local CF = Data[1]
+                    if CF and IsOpen() and Arrow then 
+                        Handle_Initiate_S:FireServer("arrow_knock_back_damage", Character, CF, Mob, 200, 200)
+                    end
+                    task.wait(0.13)
+                end 
+            end)
+        end 
+    end 
+})
+
+Farming:AddToggle({
+    Name = "L2",
+    Value = false,
+    Flag = "Arrow2",
+    Callback = function(State)
+        Arrow2 = State 
+        while Arrow2 and IsOpen() do 
+            Handle_Initiate_S:FireServer("skil_ting_asd", Player, "arrow_knock_back", 5)
+            for i = 1, 50 do
+                local Data = GetClosestMob() 
+                local Mob = Data[3]
+                if Mob and Arrow2 and IsOpen() then 
+                    Handle_Initiate_S:FireServer("Arrow_knock_back_throw", Player, HumanoidRootPart, HumanoidRootPart.CFrame + Vector3.new(0, Y or 1, 0))
+                    local Part = Debree:WaitForChild(Player.Name.."'s arrow")
+                    local Damage = Part:FindFirstChild("Damagething")
+                    Handle_Initiate_S:FireServer("Koketsu_arrow_damage", Character, Part, HumanoidRootPart.CFrame, Mob)
+                    spawn(function()
+                        while Damage.Parent and IsOpen() do 
+                            Damage:FireServer()                      
+                        end 
+                    end)
+                end 
+                task.wait(0.13)
+            end 
+        end 
+    end 
+}) 
+
+Farming:AddButton({
+    Name = "Bring All",
+    Callback = function()
+        Handle_Initiate_S_:InvokeServer("skil_ting_asd", Player, "arrow_knock_back", 5)
+        Handle_Initiate_S_:InvokeServer("Arrow_knock_back_throw", Player, HumanoidRootPart, HumanoidRootPart.CFrame + Vector3.new(0, Y or 1, 0))
+        local Part = Debree:WaitForChild(Player.Name.."'s arrow")
+        for i,v in next, Players:GetPlayers() do
+            if v == Player then continue end
+            Handle_Initiate_S:FireServer("Koketsu_arrow_damage", Character, Part, HumanoidRootPart.CFrame, v.Character)
+        end 
+    end 
+})
+
+Farming:AddSlider({
+    Name = "Y Offset",
+    Min = -1000,
+    Max = 1000,
+    Value = 1, 
+    Flag = "Y",
+    Callback = function(State)
+        Y = State
+    end 
+})
+
+local SelectedSkill = ""
+Farming:AddToggle({
+    Name = "Godmode", 
+    Value = false,
+    Flag = "Godmode",
+    Callback = function(State)
+        Godmode = State 
+        while Godmode and IsOpen() do 
+            Handle_Initiate_S:FireServer("skil_ting_asd", Player, SelectedSkill, 1)
+        end 
+    end 
+})
+
+Farming:AddDropdown({
+    Name = "Skill",
+    List = Godmodes, 
+    Flag = "Skill",
+    Nothing = "Select Skill..",
+    Callback = function(State)
+        SelectedSkill = State 
+    end 
+})
+
+task.wait(0.1)
+Farming:AddToggle({
+    Name = "Farm",
+    Value = false,
+    Flag = "Farm",
+    Callback = function(State)
+        XLROPFK = State 
+        while XLROPFK and IsOpen() do 
+            local Table = GetClosestMob() 
+            local Pos = Table[1]
+            local Magnitude = Table[2]
+            if Pos and Magnitude then
+                if Magnitude > 100 then 
+                    LastTween:Pause()
+                    LastTween = TweenService:Create(HumanoidRootPart, TweenInfo.new(Magnitude / TweenSpeed, Linear), {CFrame = Pos})
+                    LastTween:Play()
+                elseif KillAuraReady then
+                    HumanoidRootPart.CFrame = Pos 
+                    Bindable:Fire()
+                else 
+                    HumanoidRootPart.CFrame = Pos + Vector3.new(0, Distance, 0)
+                end 
+            end 
+        end 
+    end 
+})
+
+task.wait(0.1)
+Farming:AddToggle({
+    Name = "Block",
+    Value = false, 
+    Flag = "Block",
+    Callback = function(State)
+        LROPTMFLG = State 
+        while LROPTMFLG and IsOpen() do 
+            Handle_Initiate_S:FireServer("add_blocking", "", os.clock(), LocalValues, 1) 
+        end 
+        Handle_Initiate_S_:InvokeServer("remove_blocking", LocalValues)
+    end 
+})
+
+task.wait(0.1)
+Farming:AddDropdown({
+    Name = "Bosses",
+    List = Bosses,
+    Multi = true,
+    Flag = "Bosses",
+    Callback = function(State)
+        SelectedBosses = State
+    end 
+})
+
+task.wait(0.1)
+Farming:AddDropdown({
+    Name = "Mobs",
+    List = Mobs,
+    Multi = true, 
+    Flag = "Mobs",
+    Callback = function(State)
+        SelectedMobs = State 
+    end 
+})
+
+task.wait(0.1)
+PPlayers:AddToggle({
+    Name = "Farm Player",
+    Value = false,
+    Flag = "FarmPlayer",
+    Callback = function(State)
+        XLROPRT = State 
+        while XLROPRT and IsOpen() do 
+            local Table = GetClosestPlayer() 
+            local Pos = Table[1]
+            local Magnitude = Table[2]
+            if Pos and Magnitude then
+                if Magnitude > 100 then 
+                    LastTween:Pause()
+                    LastTween = TweenService:Create(HumanoidRootPart, TweenInfo.new(Magnitude / TweenSpeed, Linear), {CFrame = Pos})
+                    LastTween:Play()
+                elseif KillAuraReady then
+                    HumanoidRootPart.CFrame = Pos 
+                    Bindable:Fire()
+                else 
+                    HumanoidRootPart.CFrame = Pos + Vector3.new(0, Distance, 0)
+                end 
+            end 
+        end 
+    end 
+})
+
+task.wait(0.1)
+Settings:AddSlider({
+    Name = "Tween Speed",
+    Value = 450,
+    Min = 100,
+    Max = 600,
+    Flag = "Tween",
+    Callback = function(State)
+        TweenSpeed = State 
+    end 
+})
+
+task.wait(0.1)
+Settings:AddSlider({
+    Name = "Distance",
+    Value = 35,
+    Min = 0,
+    Max = 100,
+    Flag = "Distance",
+    Callback = function(State)
+        Distance = State 
+    end 
+})
+
+task.wait(0.1)
+BossStatus:AddLabel(All)
+BossStatus:AddLabel(All)
+BossStatus:AddLabel(All)
+BossLabel = BossStatus:AddLabel(All)
+BossStatus:AddLabel(All)
+BossStatus:AddLabel(All)
+BossStatus:AddLabel(All)
+
+task.wait(0.1)
+Aura:AddToggle({
+    Name = "Kill Aura",
+    Value = false,
+    Flag = "KillAura",
+    Callback = function(State)
+        OTPRMDL = State 
+        while OTPRMDL and IsOpen() do 
+            KillAuraReady = true 
+            Bindable.Event:Wait()
+            task.wait(0.2) 
+            repeat task.wait() until Combo.Value < 1
+            for i = 1, 4 do FireAttack(i) end FireAttack(919)
+            for i = 1, 4 do FireAttack(i) end FireAttack(919)
+            for i = 1, 4 do FireAttack(i) end FireAttack(919)
+            InvokeAttack(1)
+            task.wait(0.2)
+            KillAuraReady = false 
+            task.wait(0.6)
+        end 
+    end 
+})
+
+task.wait(0.1)
+Aura:AddDropdown({
+    Name = "Weapon",
+    List = {"Scythe", "Sword", "Claw", "Fans", "Fist"},
+    Nothing = "Select Weapon..",
+    Flag = "Weapon",
+    Callback = function(State)
+        if State == "Fist" then 
+            Method = "kick"
+        else 
+            Method = "ground_slash"
+        end 
+        SelectedWeapon = Weapons[State]
+    end    
+})
+
+task.wait(0.1)
+local MapToUse = game.PlaceId == 6152116144 and Map1 or Map2 
+Teleports:AddButton({
+    Name = "Teleport To",
+    Callback = function()
+        local Place = MapToUse[SelectedArea] 
+        local Magnitude = Place and (HumanoidRootPart.Position - Vector3.new(Place.X, Place.Y, Place.Z)).Magnitude 
+        if Magnitude then 
+            Teleporting = true 
+            local Cur = TweenService:Create(HumanoidRootPart, TweenInfo.new(Magnitude / TweenSpeed, Linear), {CFrame = MapToUse[SelectedArea] + Vector3.new(0, 5, 0)})
+            Cur:Play() 
+            Cur.Completed:Wait()
+            Teleporting = false 
+        end 
+    end 
+})
+
+task.wait(0.1)
+if game.PlaceId == 6152116144 then 
+    Teleports:AddDropdown({
+        Name = "Locations",
+        Nothing = "Select Location..",
+        Flag = "Map1",
+        List = Map1List, 
+        Callback = function(State)
+            SelectedArea = State 
+        end 
+    }) 
+else 
+    Teleports:AddDropdown({
+        Name = "Locations",
+        Nothing = "Select Location..",
+        Flag = "Map2",
+        List = Map2List, 
+        Callback = function(State)
+            SelectedArea = State 
+        end 
+    }) 
+end 
+
+task.wait(0.1)
+local LastTween = {Pause = function() end}
+Teleports:AddToggle({
+    Name = "Spider Lilly",
+    Value = false, 
+    Flag = "Lilly",
+    Callback = function(State)
+        SKTIEP = State 
+        while SKTIEP and IsOpen() do -- bugged flowers = gay
+            local Data = GetClosestFlower() 
+            local Pos = Data[1]
+            local Dist = Data[2]
+            local Prox = Data[3]  
+            local Flower = Data[4]
+            if Pos then
+                if Prox then 
+                    fireproximityprompt(Prox)  
+                end 
+                LastTween:Pause()
+                LastTween = TweenService:Create(HumanoidRootPart, TweenInfo.new(Dist / TweenSpeed, Linear), {CFrame = Pos})
+                LastTween:Play()
+            end 
+        end 
+    end 
+})
+
+task.wait(0.1)
+ClanLabel = Info:AddLabel(All)
+SpinLabel = Info:AddLabel(All)
+RaceLabel = Info:AddLabel(All)
+BreathingLabel = Info:AddLabel(All)
+DemonLabel = Info:AddLabel(All)
+
+MiscMain:AddToggle({
+    Name = "Auto Loot Chests",
+    Value = false, 
+    Flag = "Loot",
+    Callback = function(State)
+        OSTPRKGL = State 
+    end 
+})
+
+MiscMain:AddToggle({
+    Name = "Auto Eat Souls",
+    Value = false,
+    Flag = "Souls",
+    Callback = function(State)
+        PRMFLDS = State 
+    end 
+})
+
+MiscMain:AddToggle({
+    Name = "Auto Collect Orbs",
+    Value = false, 
+    Flag = "AutoOrb",
+    Callback = function(State)
+        LIPJRMAL = State 
+        while LIPJRMAL and IsOpen() do 
+            for i,v in next, Map:GetChildren() do -- orbs were being autistic and childadded on map outside of ouw = 3fps
+                if v:IsA("Model") and v:FindFirstChild("Sound") and (not v.Name:match("Insta")) then 
+                    for i1,v1 in next, v:GetChildren() do 
+                        if v1:FindFirstChild("TouchInterest") then 
+                            v:PivotTo(HumanoidRootPart.CFrame)
+                        end 
+                    end 
+                end 
+            end 
+            task.wait(0.5)
+        end 
+    end 
+})
+
+local Formatted = ("%svs"):format(Player.Name)
+MiscMain:AddToggle({
+    Name = "Auto Clash",
+    Value = false, 
+    Flag = "AutoClash",
+    Callback = function(State)
+        LRIEPMFLA = State 
+        while LRIEPMFLA and IsOpen() do -- what the fuck is this
+            local ClashFolder = Debree:FindFirstChild("clash_folder") 
+            if ClashFolder then 
+                for i,v in next, ClashFolder:GetChildren() do 
+                    if v.Name:find(Formatted) then 
+                        local Points = v:FindFirstChild(Player.Name) 
+                        if not Points then continue end 
+                        spawn(function()
+                            task.wait(7.5) 
+                            Handle_Initiate_S:FireServer("Change_Value", Points, 99999999999)
+                        end)
+                    else 
+                        for i1,Points in next, v:GetChildren() do 
+                            if Players:FindFirstChild(Points.Name) then 
+                                spawn(function()
+                                    task.wait(7.5) 
+                                    Handle_Initiate_S:FireServer("Change_Value", Points, 99999999999)
+                                end)
+                            end 
+                        end 
+                    end 
+                end 
+            end 
+            local Found = Clashing:FindFirstChild(Player.Name)
+            local Points = Found and Found:FindFirstChild("Points") 
+            if Points then
+                Handle_Initiate_S:FireServer("Change_Value", Points, 99999999999)  
+            end 
+        end 
+    end 
+})
+
+MiscMain:AddToggle({
+    Name = "Inf Stamina",
+    Value = false,
+    Flag = "Stamina",
+    Callback = function(State)
+        IGORTMDL = State 
+        while IGORTMDL and IsOpen() do 
+            RG:Stamina(-5)
+        end 
+    end 
+})
+
+MiscMain:AddToggle({
+    Name = "Inf Breath",
+    Value = false,
+    Flag = "Breath",
+    Callback = function(State)
+        TEKFOGP = State 
+        while TEKFOGP and IsOpen() do 
+            RG:Breath(-5)
+        end 
+    end 
+})
+
+ToggleGod = MiscMain:AddToggle({
+    Name = "Regeneration | Kamado",
+    Value = false,
+    Flag = "Regen",
+    Callback = function(State) 
+        if CClan ~= "Kamado" then ToggleGod:Set(false) return end
+        KamadoHeal:FireServer(State)
+        KamadoHeal:FireServer(State)
+    end 
+})
+
+ToggleSpeed = MiscMain:AddToggle({
+    Name = "Godspeed | Human",
+    Value = false,
+    Flag = "GodSpeed",
+    Callback = function(State)
+        if RRace == "Demon" then ToggleSpeed:Set(false) return end
+        GodSpeed:FireServer(State)
+    end 
+})
+
+ToggleAblaze = MiscMain:AddToggle({
+    Name = "Heart Ablaze | Human",
+    Value = false,
+    Flag = "Heart Ablaze",
+    Callback = function(State)
+        if RRace == "Demon" then ToggleAblaze:Set(false) return end
+        HeartAblaze:FireServer(State)
+    end 
+})
+
+MiscMain:AddToggle({
+    Name = "War Drums",
+    Value = false, 
+    Flag = "WarDrums",
+    Callback = function(State)
+        TLROAPSMG = State 
+        while TLROAPSMG and IsOpen() do 
+            DrumRemote:FireServer(true)
+            task.wait(7.5)
+        end     
+    end 
+})
+
+MiscMain:AddToggle({
+    Name = "Furiosity",
+    Value = false, 
+    Flag = "Furiosity",
+    Callback = function(State)
+        OHSAGIASGL = State 
+        while OHSAGIASGL and IsOpen() do
+            local Count = (CClan == "Soyama" and 7) or 3 
+            for i = 1, Count do  
+                Furiosity:FireServer(true) 
+                repeat task.wait() until FuriosityDisplay.Visible 
+                repeat task.wait() until not FuriosityDisplay.Visible  
+            end 
+            repeat task.wait() until Player:FindFirstChild("hacktanbgasd12312312").Value < 1 
+        end 
+    end 
+})
+
+MiscMisc:AddSlider({
+    Name = "WalkSpeed",
+    Value = 16,
+    Min = 16,
+    Max = 300,
+    Flag = "WalkSpeed",
+    Callback = function(State)
+        WalkSpeed = State 
+    end 
+})
+
+MiscMisc:AddSlider({
+    Name = "JumpPower",
+    Value = 50,
+    Min = 50,
+    Max = 1000,
+    Flag = "JumpPower",
+    Callback = function(State)
+        JumpPower = State 
+    end 
+})
+
+MiscMisc:AddButton({
+    Name = "Reset",
+    Callback = function()
+        Humanoid.Health = 0 
+        task.wait(0.5)
+        Humanoid.Health = 0
+    end 
+})
+
+MiscMisc:AddToggle({
+    Name = "Disable 3D Rendering",
+    Value = false,
+    Flag = "3DR",
+    Callback = function(State)
+        game:GetService("RunService"):Set3dRenderingEnabled(not State)
+    end 
+})
+
+for i,v in next, getconnections(Player.Idled) do v:Disable() end 
