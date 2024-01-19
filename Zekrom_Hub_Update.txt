@@ -2,7 +2,7 @@ if _G.Chest_Farm then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2/main/ChestFarm_BF.lua"))()
 elseif _G.FruitFinder then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2/main/FruitFinder.lua"))()
-else
+elseif _G.Main then
     local a = "https://raw.githubusercontent.com/"
     local b = "bot21333/C-/main/"
     local a = a .. b .. "/C__%23%23.lua"
